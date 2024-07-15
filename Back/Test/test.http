@@ -1,0 +1,32 @@
+POST http://localhost:3004/login
+content-type: application/json
+
+{
+  "email": "brondinofabio@gmail.com",
+  "password": "4dmin3ur0m1ll1ons"
+}
+
+###
+
+POST http://localhost:3004/register
+content-type: application/json
+
+{
+  "firstname": "Fabio",
+  "lastname": "Brondino",
+  "email": "brondinofabio@gmail.com",
+  "password": "4dmin3ur0m1ll1ons"
+
+}
+
+###
+
+POST http://localhost:3004/login
+content-type: application/json
+
+{
+  "email": "belledevilleneuve@example.com",
+  "password": "Adam"
+}
+
+###

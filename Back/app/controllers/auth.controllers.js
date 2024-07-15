@@ -6,6 +6,7 @@ const controller = {
   async addUser(req, res) {
 
       const newUser = req.body;
+      console.log(newUser);
 
         const result = await authDatamapper.addUser(newUser);
         res.json(result);
@@ -15,6 +16,7 @@ const controller = {
   async connectUser(req, res) {
 
       const userInfo = req.body;
+      console.log(userInfo);
 
       const {result} = await authDatamapper.connectUser(userInfo);
 
