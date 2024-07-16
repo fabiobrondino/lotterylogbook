@@ -36,6 +36,8 @@ CREATE TABLE "user" (
     avatar VARCHAR(255),
     role_id INT NOT NULL DEFAULT 2,
     lucky_number_id INT,
+    reset_token VARCHAR(255),
+    reset_token_expiry TIMESTAMP,
     FOREIGN KEY (role_id) REFERENCES role(id_role),
     FOREIGN KEY (lucky_number_id) REFERENCES lucky_number(id_lucky_number)
 );

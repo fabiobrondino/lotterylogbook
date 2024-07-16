@@ -30,3 +30,22 @@ content-type: application/json
 }
 
 ###
+
+POST http://localhost:3004/request-reset-password
+content-type: application/json
+
+{
+  "email": "brondinofabio@gmail.com"
+}
+
+###
+
+POST http://localhost:3004/reset-password
+content-type: application/json
+
+{
+  "token": "ee9e4600223058dab332cab018a2f9f9eade092c",
+  "newPassword": "helloworld"
+}
+
+###
