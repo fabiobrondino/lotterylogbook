@@ -34,12 +34,9 @@ const controller = {
 
   async requestPasswordReset(req, res) {
     const { email } = req.body;
-    
     // Générer un token sécurisé
     const token = crypto.randomBytes(20).toString('hex');
-    console.log(token);
     const resetTokenExpiry = Date.now() + 3600000; // 1 heure
-    console.log(resetTokenExpiry);
 
     // Sauvegarder le token et son expiration dans la base de données
     await authDatamapper.saveResetToken(token, resetTokenExpiry, email);
@@ -82,7 +79,7 @@ const controller = {
     // Vérifier le token et son expiration
     const user = await authDatamapper.verifyResetToken(token);
 
-    if (!user || user.resetTokenExpiry < Date.now()) {
+    if (!user || user.reset_token_expiry < Date.now()) {
       return res.status(400).send('Le token est invalide ou a expiré');
     }
 

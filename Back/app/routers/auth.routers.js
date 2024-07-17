@@ -21,10 +21,10 @@ router.post("/register", controllerHandler(authController.addUser));
 router.post("/login", controllerHandler(authController.connectUser));
 
 // Route pour demander une réinitialisation de mot de passe
-router.post('/request-reset-password', authController.requestPasswordReset);
+router.post('/request-reset-password', controllerHandler(authController.requestPasswordReset));
 
 // Route pour réinitialiser le mot de passe
-router.post('/reset-password', authController.resetPassword);
+router.post('/reset-password', controllerHandler(authController.resetPassword));
 
 router.use(() => {
     throw new ApiError('Authentification erreur!', 404);

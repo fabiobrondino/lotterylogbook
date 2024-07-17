@@ -2,9 +2,7 @@ const { getSpecificResult } = require("./utility");
 const bcrypt = require('bcrypt');
 
 const authDatamapper = {
-  //! Ne pas add si l'email existe déjà
   async addUser(user) {
-console.log(user);
 
     // Vérification de l'existence de l'email
     let checkEmailQuery = `SELECT * FROM public.user WHERE email = $1`;
@@ -30,20 +28,17 @@ console.log(user);
     ];
 
     const newUser = await getSpecificResult(sqlQuery, values);
-    console.log(newUser);
 
     return await newUser;
   },
 
   async connectUser(user) {
-    console.log(user);
     let sqlQuery = `SELECT * FROM public.user 
                     WHERE email = $1`;
 
     let values = [user.email];
 
     const userFound = await getSpecificResult(sqlQuery, values);
-console.log(userFound);
     const validPassword = bcrypt.compareSync(user.password, userFound.result[0].password);
     if (!validPassword) {
       return { error: "Mot de passe incorrect" };
@@ -59,9 +54,8 @@ console.log(userFound);
                     WHERE email = $3 
                     RETURNING *`;
     let values = [token, expiry, email];
-    console.log(values);
-
-    return await getSpecificResult(sqlQuery, values);
+    const resetToken = await getSpecificResult(sqlQuery, values);
+    return await resetToken;
   },
 
   async verifyResetToken(token) {
@@ -90,7 +84,6 @@ console.log(userFound);
     let updateValues = [encryptedPassword, email];
 
     const updatedUser = await getSpecificResult(updatePasswordQuery, updateValues);
-    console.log(updatedUser);
 
     return updatedUser;
   }

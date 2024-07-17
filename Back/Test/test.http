@@ -44,8 +44,8 @@ POST http://localhost:3004/reset-password
 content-type: application/json
 
 {
-  "token": "ee9e4600223058dab332cab018a2f9f9eade092c",
-  "newPassword": "helloworld"
+  "token": "fc12deefb31ec105ca798f623954c4383a777ce1",
+  "newPassword": "hello"
 }
 
 ###
