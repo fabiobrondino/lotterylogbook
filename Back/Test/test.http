@@ -12,10 +12,10 @@ POST http://localhost:3004/register
 content-type: application/json
 
 {
-  "firstname": "Fabio",
+  "firstname": "Leila",
   "lastname": "Brondino",
-  "email": "brondinofabio@gmail.com",
-  "password": "4dmin3ur0m1ll1ons"
+  "email": "brondinoleila@gmail.com",
+  "password": "hello"
 
 }
 
@@ -35,7 +35,7 @@ POST http://localhost:3004/request-reset-password
 content-type: application/json
 
 {
-  "email": "brondinofabio@gmail.com"
+  "email": "brondinoleila@gmail.com"
 }
 
 ###
@@ -46,6 +46,33 @@ content-type: application/json
 {
   "token": "fc12deefb31ec105ca798f623954c4383a777ce1",
   "newPassword": "hello"
+}
+
+###
+GET http://localhost:3004/profile/1
+
+###
+
+PUT http://localhost:3004/profile/2/edit
+content-type: application/json
+
+{
+  "firstname": "Charlotte",
+  "lastname": "Brondino",
+  "password": "coucou",
+  "avatar": ""
+}
+
+###
+
+DELETE http://localhost:3004/profile/2/delete
+content-type: application/json
+
+{
+  "firstname": "Charlotte",
+  "lastname": "Brondino",
+  "password": "coucou",
+  "avatar": ""
 }
 
 ###

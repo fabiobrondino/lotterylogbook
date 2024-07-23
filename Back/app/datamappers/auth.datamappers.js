@@ -8,7 +8,7 @@ const authDatamapper = {
     let checkEmailQuery = `SELECT * FROM public.user WHERE email = $1`;
     let emailValues = [user.email];
     const userExists = await getSpecificResult(checkEmailQuery, emailValues);
-
+//! vefifier comment le front recuperera cette erreur pour l'afficher à l'utilisateur
     if (userExists.result.length > 0) {
       return { error: "Un utilisateur avec cet email existe déjà" };
     }

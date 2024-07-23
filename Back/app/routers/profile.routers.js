@@ -8,10 +8,10 @@ const  securityService  = require('../services/security');
 const express = require("express");
 const router = express.Router();
 
-router.use(securityService.isConnected);
+//router.use(securityService.isConnected);
 
 /**
- * GET /Profile/{id}
+ * GET /profile/{id}
  * @summary  La route permet de récupérer le profil d'un utilisateur
  * @param {number} id.path - The user id
  * @return {Profile} 200 - success response - application/json
@@ -19,7 +19,7 @@ router.use(securityService.isConnected);
 router.get("/:id", controllerHandler(profileController.getProfile));
 
 /**
- * PUT /Profile/{id}/edit
+ * PUT /profile/{id}/edit
  * @summary  La route permet de récupérer le profil d'un utilisateur et de le modifier
  * @param {number} id.path - The user id
  * @return {Profile} 200 - success response - application/json
@@ -27,7 +27,7 @@ router.get("/:id", controllerHandler(profileController.getProfile));
 router.put("/:id/edit", controllerHandler(profileController.editProfileUser));
 
 /**
- * DELETE /Profile/{id}/delete
+ * DELETE /profile/{id}/delete
  * @summary  La route permet de récupérer le profil d'un utilisateur et de le supprimer
  * @param {number} id.path - The user id
  * @return {Profile} 200 - success response - application/json
