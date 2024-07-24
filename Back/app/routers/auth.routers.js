@@ -26,9 +26,9 @@ router.post('/request-reset-password', controllerHandler(authController.requestP
 // Route pour réinitialiser le mot de passe
 router.post('/reset-password', controllerHandler(authController.resetPassword));
 
-router.use(() => {
-    throw new ApiError('Authentification erreur!', 404);
-  });
+// router.use(() => {
+//     throw new ApiError('Authentification erreur!', 404);
+//   });
   
   router.use(errorHandler);
 

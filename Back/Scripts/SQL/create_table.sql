@@ -12,9 +12,8 @@ CREATE TABLE combinations(
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     number INT NOT NULL,
     star INT NOT NULL,
-    reference_date DATE NOT NULL,
     star_plus BOOLEAN NOT NULL,
-    gain NUMERIC (15, 2)
+    reference_date DATE NOT NULL
 );
 
 CREATE TABLE lucky_number (
@@ -39,7 +38,9 @@ CREATE TABLE "user" (
     reset_token VARCHAR(255),
     reset_token_expiry BIGINT,
     FOREIGN KEY (role_id) REFERENCES role(id_role),
-    FOREIGN KEY (lucky_number_id) REFERENCES lucky_number(id_lucky_number)
+    FOREIGN KEY (lucky_number_id) REFERENCES lucky_number(id_lucky_number),
+    gain NUMERIC (15, 2),
+    loss NUMERIC (15, 2)
 );
 
 CREATE TABLE results (
