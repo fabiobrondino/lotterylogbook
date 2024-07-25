@@ -76,3 +76,63 @@ content-type: application/json
 }
 
 ###
+
+GET http://localhost:3004/home
+
+###
+
+POST http://localhost:3004/home/1/combinations
+Content-Type: application/json
+
+{
+  "number": [4, 9, 30, 42, 47],
+  "star": [7, 9],
+  "star_plus": false,
+  "reference_date": "2025-05-05"
+}
+
+###
+
+DELETE http://localhost:3004/home/combinations/7
+Content-Type: application/json
+
+###
+
+POST http://localhost:3004/home/1/lucky-number
+Content-Type: application/json
+
+{
+  "number": [2, 12, 16, 17, 19, 20, 21, 23, 34, 35, 42],
+  "star": [2, 3, 6, 7]
+}
+
+###
+
+GET http://localhost:3004/home/1/lucky-number
+
+###
+
+POST http://localhost:3004/home/1
+Content-Type: application/json
+
+{
+  "reference_date": "2025-05-15",
+  "jackpot": 15000000.00
+}
+
+###
+
+POST http://localhost:3004/history/1
+Content-Type: application/json
+
+{
+  "number": [3, 12, 36, 40, 50],
+  "star": [4, 7],
+  "reference_date": "2025-05-05"
+}
+
+###
+
+GET http://localhost:3004/history/1
+
+###
