@@ -2,8 +2,8 @@ POST http://localhost:3004/login
 content-type: application/json
 
 {
-  "email": "brondinofabio@gmail.com",
-  "password": "4dmin3ur0m1ll1ons"
+  "email": "brondinoleila@gmail.com",
+  "password": "hello"
 }
 
 ###
@@ -44,8 +44,8 @@ POST http://localhost:3004/reset-password
 content-type: application/json
 
 {
-  "token": "fc12deefb31ec105ca798f623954c4383a777ce1",
-  "newPassword": "hello"
+  "token": "47f97459dc2df830b68adbef39df6d93f9a585aa",
+  "newPassword": "fabao696"
 }
 
 ###
@@ -81,7 +81,7 @@ GET http://localhost:3004/home
 
 ###
 
-POST http://localhost:3004/home/1/combinations
+POST http://localhost:3004/home/2/combinations
 Content-Type: application/json
 
 {
@@ -93,12 +93,12 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3004/home/combinations/7
+DELETE http://localhost:3004/home/combinations/17
 Content-Type: application/json
 
 ###
 
-POST http://localhost:3004/home/1/lucky-number
+POST http://localhost:3004/home/2/lucky-number
 Content-Type: application/json
 
 {
@@ -108,7 +108,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3004/home/1/lucky-number
+GET http://localhost:3004/home/2/lucky-number
 
 ###
 
