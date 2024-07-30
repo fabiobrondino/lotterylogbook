@@ -136,3 +136,8 @@ Content-Type: application/json
 GET http://localhost:3004/history/1
 
 ###
+
+
+GET http://localhost:3004/history/1/2990-05-05
+
+###

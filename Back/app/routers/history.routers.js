@@ -16,6 +16,8 @@ router.post('/:role_id', controllerHandler(historyController.sendResults));
 
 router.get('/:id', controllerHandler(historyController.getHistory));
 
+router.get('/:id/:reference_date', controllerHandler(historyController.getSpecificHistory));
+
 router.use(() => {
     throw new ApiError('History, not sweet History?', 404);
 });

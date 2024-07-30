@@ -13,3 +13,5 @@ psql -U postgres -d ma_super_loterie -f ./Scripts/SQL/create_role.sql
 psql -U postgres -d ma_super_loterie -f ./Scripts/SQL/create_next_game.sql
 psql -U postgres -d ma_super_loterie -f ./Scripts/SQL/create_price.sql
 psql -U postgres -d ma_super_loterie -f ./Scripts/SQL/create_admin.sql
+psql -U postgres -d ma_super_loterie -f ./Scripts/SQL/create_combinations.sql
+psql -U postgres -d ma_super_loterie -f ./Scripts/SQL/create_lucky_number.sql

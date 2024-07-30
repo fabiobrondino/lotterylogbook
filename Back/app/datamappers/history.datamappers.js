@@ -17,22 +17,25 @@ const historyDatamapper = {
     },
 
     async getHistory(id_profile) {
-        console.log(id_profile);
-        let sqlQuery = `SELECT 
-                            combinations.date AS combinations_date, 
-                            combinations.number AS combinations_number,
-                            combinations.star AS combinations_star,
-                            combinations.star_plus AS combinations_star_plus,
-                            combinations.reference_date AS combinations_reference_date,
-                            lucky_number.number AS lucky_number_number,
-                            lucky_number.star AS lucky_number_star
+        
+        let sqlQuery = `SELECT *
                         FROM combinations 
-                        JOIN "user" ON "user".id_user = combinations.user_id 
-                        JOIN lucky_number ON lucky_number.user_id = "user".id_user 
-                        WHERE "user".id_user = $1;
-`;
+                        WHERE combinations.user_id = $1;
+                        `;
         let values = [id_profile];
-        console.log(values);
+
+        return await getSpecificResult(sqlQuery, values);
+    },
+
+    async getSpecificHistory(id_profile, reference_date) {
+        
+        let sqlQuery = `SELECT *
+                        FROM combinations 
+                        WHERE combinations.user_id = $1
+                        AND combinations.reference_date = $2;
+                        `;
+        let values = [id_profile, reference_date];
+
         return await getSpecificResult(sqlQuery, values);
     }
 };
