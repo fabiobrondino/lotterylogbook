@@ -3,36 +3,21 @@
 .App {
 	text-align: center;
 
-	&-logo {
-		height: 40vmin;
-		pointer-events: none;
-
-		@media (prefers-reduced-motion: no-preference) {
-			animation: App-logo-spin infinite 20s linear;
-		}
-	}
+	
 
 	&-header {
-		background-color: v.$color-bg;
+		background-color: v.$em-color-blue;
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		font-size: calc(10px + 2vmin);
-		color: v.$color;
+		color: v.$em-color-white;
 	}
 
 	&-link {
-		color: v.$color-primary;
+		color: v.$em-color-yellow;
 	}
 }
 
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
