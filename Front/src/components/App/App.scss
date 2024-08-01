@@ -1,23 +1,11 @@
 @use '../../styles/variables' as v;
 
 .App {
-	text-align: center;
-
-	
-
-	&-header {
-		background-color: v.$em-color-blue;
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		font-size: calc(10px + 2vmin);
-		color: v.$em-color-white;
-	}
-
-	&-link {
-		color: v.$em-color-yellow;
-	}
+	background-color: v.$em-color-blue;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: v.$em-color-white;
 }
 
