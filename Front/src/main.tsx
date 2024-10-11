@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './routes';
 import store from './store';
 import './styles/index.scss';
+import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
