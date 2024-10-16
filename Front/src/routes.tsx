@@ -2,8 +2,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import Root from './routes/Root/Root';
-import HelloWorld from './components/HelloWorld/HelloWorld';
 import Home from './routes/Home/Home';
+import HelloWorld from './components/HelloWorld/HelloWorld';
+import Login from './routes/Login/Login';
+import Profile from './routes/Profile/Profile';
+import History from './routes/History/History';
 
 export const router = createBrowserRouter([
   {
@@ -13,11 +16,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        element: <Login />,
       },
       {
         path: '/helloworld',
         element: <HelloWorld />,
+      },
+      {
+        path: '/home',
+        element: <Home />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
+      },
+      {
+        path: '/history',
+        element: <History />,
       },
     ],
   },

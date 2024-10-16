@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
-function Home() {
+function Profile() {
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Profile</h1>
       <Link to="/helloworld">Go to Hello World</Link>
     </div>
   );
 }
 
-export default Home;
+export default Profile;
