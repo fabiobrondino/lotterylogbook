@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 
 const authDatamapper = {
   async addUser(user) {
-
     // Vérification de l'existence de l'email
     let checkEmailQuery = `SELECT * FROM public.user WHERE email = $1`;
     let emailValues = [user.email];

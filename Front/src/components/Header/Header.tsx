@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 function Header() {
   const navigate = useNavigate();
   const handleLogout = () => {
+    localStorage.removeItem('token'); // Supprimer le token du localStorage
     navigate('/'); // Rediriger l'utilisateur vers la page de login après déconnexion
   };
   return (

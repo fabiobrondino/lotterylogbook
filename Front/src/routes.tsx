@@ -7,6 +7,8 @@ import HelloWorld from './components/HelloWorld/HelloWorld';
 import Login from './routes/Login/Login';
 import Profile from './routes/Profile/Profile';
 import History from './routes/History/History';
+import LoginPage from './components/LoginPage/LoginPage';
+import RegisterPage from './components/RegisterPage/RegisterPage';
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
       {
         path: '/history',
         element: <History />,
+      },
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/register',
+        element: <RegisterPage />,
       },
     ],
   },

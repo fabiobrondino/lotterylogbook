@@ -9,6 +9,7 @@ const controller = {
 
       const newUser = req.body;
       console.log(newUser);
+      console.log('addUser');
 
         const result = await authDatamapper.addUser(newUser);
         res.json(result);
