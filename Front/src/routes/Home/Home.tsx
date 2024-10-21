@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NextGame from '../../components/NextGame/NextGame';
 import LuckyNumber from '../../components/LuckyNumber/LuckyNumber';
 import fetchUser from '../../services/user_api';
+import SelectLuckyNumber from '../../components/SelectLuckyNumber/SelectLuckyNumber';
 
 interface User {
   id_user: number;
@@ -50,6 +51,7 @@ function Home() {
       )}
       <h1>Home</h1>
       <Link to="/helloworld">Go to Hello World</Link>
+      <SelectLuckyNumber />
     </div>
   );
 }
