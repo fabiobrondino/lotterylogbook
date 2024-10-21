@@ -9,6 +9,7 @@ import Profile from './routes/Profile/Profile';
 import History from './routes/History/History';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
+import PrivateRoute from './services/securePath';
 
 export const router = createBrowserRouter([
   {
@@ -26,15 +27,27 @@ export const router = createBrowserRouter([
       },
       {
         path: '/home',
-        element: <Home />,
+        element: (
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/profile',
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/history',
-        element: <History />,
+        element: (
+          <PrivateRoute>
+            <History />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/login',
