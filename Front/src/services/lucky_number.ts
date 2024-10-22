@@ -1,7 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import api from './api';
 
-const sendLuckyNumber = async (
+export const sendLuckyNumber = async (
   selectedNumbers: number[],
   selectedStars: number[]
 ) => {
@@ -21,4 +21,14 @@ const sendLuckyNumber = async (
   return response.data;
 };
 
-export default sendLuckyNumber;
+export const getLuckyNumber = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('Token is null');
+  }
+  const decodedToken = jwtDecode<{ userId: string }>(token);
+  const { userId } = decodedToken;
+  const response = await api.get(`/home/${userId}/lucky-number`);
+  console.log(response.data);
+  return response.data;
+};

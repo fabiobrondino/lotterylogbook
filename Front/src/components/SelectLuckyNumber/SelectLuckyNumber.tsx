@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { useState, useEffect } from 'react';
-import sendLuckyNumber from '../../services/lucky_number';
+import { sendLuckyNumber } from '../../services/lucky_number';
 
 function SelectLuckyNumber() {
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
