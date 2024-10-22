@@ -35,8 +35,8 @@ export type Jackpot = {
 };
 
 export type LuckyNumber = {
-  number: number;
-  star: number;
+  selectedNumbers: number[];
+  selectedStars: number[];
 };
 
 export type Combinations = {

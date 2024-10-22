@@ -29,14 +29,18 @@ const homeDatamapper = {
     },
 
     async createLuckyNumber(newLuckyNumber) {
+        console.log(newLuckyNumber);
+        const { selectedNumbers, selectedStars } = newLuckyNumber.luckyNumberData;
         let sqlQuery = `INSERT INTO public.lucky_number ("number", "star", "user_id")
                         VALUES ($1, $2, $3)
                         RETURNING *`;
         let values = [
-            newLuckyNumber.luckyNumberData.number,
-            newLuckyNumber.luckyNumberData.star,
+            selectedNumbers,
+            selectedStars,
             newLuckyNumber.id_profile
         ];
+        console.log(values);
+        console.log('toto');
         return await getSpecificResult(sqlQuery, values);
     },
 

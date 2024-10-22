@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import NextGame from '../../components/NextGame/NextGame';
 import LuckyNumber from '../../components/LuckyNumber/LuckyNumber';
 import fetchUser from '../../services/user_api';
@@ -21,6 +20,7 @@ function Home() {
       try {
         setIsLoading(true); // Indiquer que le chargement est en cours
         const fetchedUsers: User[] = await fetchUser();
+        console.log(fetchedUsers);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         setUsers(fetchedUsers);
@@ -36,7 +36,6 @@ function Home() {
   return (
     <div>
       <NextGame />
-      <LuckyNumber />
       {isLoading ? (
         <p>Chargement des utilisateurs...</p>
       ) : (
@@ -49,9 +48,8 @@ function Home() {
           ))}
         </div>
       )}
-      <h1>Home</h1>
-      <Link to="/helloworld">Go to Hello World</Link>
       <SelectLuckyNumber />
+      <LuckyNumber />
     </div>
   );
 }
