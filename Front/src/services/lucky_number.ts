@@ -32,3 +32,8 @@ export const getLuckyNumber = async () => {
   console.log(response.data);
   return response.data;
 };
+
+export const deleteLuckyNumber = async (id_lucky_number: number) => {
+  const response = await api.delete(`/home/${id_lucky_number}/lucky-number`);
+  return response.data;
+};

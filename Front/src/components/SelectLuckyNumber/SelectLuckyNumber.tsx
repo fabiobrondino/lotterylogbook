@@ -55,9 +55,11 @@ function SelectLuckyNumber() {
   };
 
   return (
-    <div className="container mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Sélectionnez vos numéros</h2>
-      <div className="grid grid-cols-10 gap-2">
+    <div className="container mx-auto my-4 border-4 p-8 w-5/6 lg:w-3/5 ">
+      <h2 className="text-xl md:text-2xl mb-4 mb-4">
+        Sélectionnez vos numéros
+      </h2>
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(50px,_1fr))] gap-2 place-items-center w-full">
         {Array.from({ length: 50 }, (_, i) => i + 1).map((number) => (
           <span
             key={number}
@@ -80,8 +82,10 @@ function SelectLuckyNumber() {
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold mb-4 mt-6">Sélectionnez vos étoiles</h2>
-      <div className="grid grid-cols-12 gap-2">
+      <h2 className="text-xl md:text-2xl mb-4 mb-4 mt-6">
+        Sélectionnez vos étoiles
+      </h2>
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(60px,_1fr))] gap-2 place-items-center w-full">
         {Array.from({ length: 12 }, (_, i) => i + 1).map((star) => (
           <span
             key={star}
@@ -109,7 +113,7 @@ function SelectLuckyNumber() {
 
       <button
         type="button"
-        className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="mt-6 end-0 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         onClick={handleSendLuckyNumber}
         disabled={selectedNumbers.length < 5 || selectedStars.length < 2}
       >

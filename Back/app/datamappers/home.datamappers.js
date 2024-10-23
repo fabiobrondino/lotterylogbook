@@ -44,6 +44,12 @@ const homeDatamapper = {
         return await getSpecificResult(sqlQuery, values);
     },
 
+    async deleteLuckyNumber(id_profile) {
+        let sqlQuery = `DELETE FROM public.lucky_number WHERE id_lucky_number = $1`;
+        let values = [id_profile];
+        return await getSpecificResult(sqlQuery, values);
+    },
+
     async createCombinations(newCombinations) {
         let sqlQuery = `INSERT INTO public.combinations ("number", "star", "star_plus", "reference_date", "user_id")
                         VALUES ($1, $2, $3, $4, $5)

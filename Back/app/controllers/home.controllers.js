@@ -41,6 +41,13 @@ const controller = {
 
         },
 
+        deleteLuckyNumber: async (req, res) => {
+            const id_profile = req.params.id;
+            const result = await homeDatamapper.deleteLuckyNumber(id_profile);
+            res.json(result);
+                
+        },
+
         createCombinations: async (req, res) => {
             const combinationsData = req.body;
             const id_profile = req.params.id;
