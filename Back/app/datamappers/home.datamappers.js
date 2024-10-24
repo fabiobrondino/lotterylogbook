@@ -49,19 +49,44 @@ const homeDatamapper = {
         let values = [id_profile];
         return await getSpecificResult(sqlQuery, values);
     },
+    //! a remettre "star_plus" et "reference_date" dans le sqlQuery
 
     async createCombinations(newCombinations) {
-        let sqlQuery = `INSERT INTO public.combinations ("number", "star", "star_plus", "reference_date", "user_id")
-                        VALUES ($1, $2, $3, $4, $5)
+        console.log(newCombinations);
+        console.log(newCombinations.combinationsData);
+        console.log(newCombinations.combinationsData.games);
+        // Vérifiez que newCombinations.games est un tableau
+        if (!Array.isArray(newCombinations.combinationsData.games)) {
+            throw new Error('Invalid data format: games should be an array');
+        }
+    
+        let sqlQuery = `INSERT INTO public.combinations ("number", "star", "user_id")
+                        VALUES ($1, $2, $3)
                         RETURNING *`;
-        let values = [
-            newCombinations.combinationsData.number,
-            newCombinations.combinationsData.star,
-            newCombinations.combinationsData.star_plus,
-            newCombinations.combinationsData.reference_date,
-            newCombinations.id_profile
-        ];
-        return await getSpecificResult(sqlQuery, values);
+        
+        const results = []; // Tableau pour stocker les résultats des insertions
+        for (const game of newCombinations.games) {
+            // Assurez-vous que numbers et stars sont des tableaux et qu'ils contiennent des éléments
+            if (!Array.isArray(game.numbers) || !Array.isArray(game.stars) || game.numbers.length === 0 || game.stars.length === 0) {
+                continue; // Ignorez les entrées invalides
+            }
+    
+            for (const number of game.numbers) {
+                for (const star of game.stars) {
+                    let values = [
+                        number,   // Insère chaque numéro individuellement
+                        star,     // Insère chaque étoile individuellement
+                        newCombinations.id_profile
+                    ];
+    
+                    console.log(values);
+                    const result = await getSpecificResult(sqlQuery, values);
+                    results.push(result); // Ajoute le résultat à la liste
+                }
+            }
+        }
+    
+        return results; // Retourne tous les résultats d'insertion
     },
 
     async deleteCombinations(id_combination) {

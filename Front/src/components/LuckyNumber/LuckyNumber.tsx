@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
 import { TrashIcon } from '@heroicons/react/20/solid';
+import sendGame from '../../services/games';
 
 // Fonction pour générer des combinaisons de k éléments parmi un tableau
 const getCombinations = (array: number[], k: number) => {
@@ -128,21 +129,26 @@ function LuckyNumber({
   };
 
   // Fonction pour envoyer les jeux sélectionnés via l'API
-  const sendSelectedGames = () => {
-    // Filtrer les jeux sélectionnés en utilisant les clés de selectedGames
-    const gamesToSend = generatedGames
-      .filter(
-        (game) =>
-          selectedGames[`${game.numbers.join(',')}-${game.stars.join(',')}`]
-      )
-      .map((game) => ({
-        numbers: game.numbers,
-        stars: game.stars,
-      }));
+  const sendSelectedGames = async () => {
+    try {
+      // Filtrer les jeux sélectionnés en utilisant les clés de selectedGames
+      const gamesToSend = generatedGames
+        .filter(
+          (game) =>
+            selectedGames[`${game.numbers.join(',')}-${game.stars.join(',')}`]
+        )
+        .map((game) => ({
+          numbers: game.numbers,
+          stars: game.stars,
+        }));
 
-    // Logique pour envoyer les jeux via une API
-    console.log(gamesToSend); // Remplace par ta logique d'envoi
-    // handleSendGames(gamesToSend); // Décommentez ceci pour envoyer via l'API
+      // Logique pour envoyer les jeux via une API
+      console.log(gamesToSend); // Remplace par ta logique d'envoi
+      const response = await sendGame(gamesToSend);
+      console.log('Mise à jour réussie', response);
+    } catch (err) {
+      console.error("Erreur lors de l'envoi", err);
+    }
   };
 
   return (

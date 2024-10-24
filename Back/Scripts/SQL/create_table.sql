@@ -33,8 +33,8 @@ CREATE TABLE combinations(
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     number INT[] NOT NULL,
     star INT[] NOT NULL,
-    star_plus BOOLEAN NOT NULL,
-    reference_date DATE NOT NULL,
+    star_plus BOOLEAN,
+    reference_date DATE,
     gain NUMERIC (15, 2),
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES "user"(id_user) ON DELETE CASCADE
