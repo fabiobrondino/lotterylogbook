@@ -10,6 +10,7 @@ import History from './routes/History/History';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PrivateRoute from './services/securePath';
+import Grid from './routes/Grid/Grid';
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <RegisterPage />,
+      },
+      {
+        path: '/grid',
+        element: <Grid />,
       },
     ],
   },

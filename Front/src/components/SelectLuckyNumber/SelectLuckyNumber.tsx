@@ -55,7 +55,7 @@ function SelectLuckyNumber() {
   };
 
   return (
-    <div className="container mx-auto my-4 border-4 p-8 w-5/6 lg:w-3/5 ">
+    <div className="container mx-auto my-4 border-4 p-8 w-5/6 lg:w-4/6 ">
       <h2 className="text-xl md:text-2xl mb-4 mb-4">
         Sélectionnez vos numéros
       </h2>

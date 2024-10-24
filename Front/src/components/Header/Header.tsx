@@ -15,7 +15,15 @@ function Header() {
               to="/home"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
             >
-              Home
+              Accueil
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/grid"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
+            >
+              Grille
             </Link>
           </li>
           <li>
@@ -23,7 +31,7 @@ function Header() {
               to="/profile"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
             >
-              Profile
+              Profil
             </Link>
           </li>
           <li>
@@ -31,7 +39,7 @@ function Header() {
               to="/history"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
             >
-              History
+              Historique
             </Link>
           </li>
         </ul>
