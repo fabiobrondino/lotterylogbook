@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import NextGame from '../../components/NextGame/NextGame';
 import fetchUser from '../../services/user_api';
 import SelectLuckyNumber from '../../components/SelectLuckyNumber/SelectLuckyNumber';
 
@@ -34,7 +33,6 @@ function Home() {
 
   return (
     <div>
-      <NextGame />
       {isLoading ? (
         <p>Chargement des utilisateurs...</p>
       ) : (

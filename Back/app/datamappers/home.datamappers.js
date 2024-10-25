@@ -3,7 +3,11 @@ const { getSpecificResult, getManyResult } = require("./utility");
 const homeDatamapper = {
 
     async getNextGame() {
-        let sqlQuery = `SELECT * FROM public.next_game WHERE "reference_date" >= CURRENT_DATE`;
+        let sqlQuery = `SELECT * 
+                        FROM public.next_game 
+                        WHERE "reference_date" > CURRENT_DATE 
+                        ORDER BY "reference_date" ASC 
+                        LIMIT 1;`;
         return await getManyResult(sqlQuery);
     },
 

@@ -117,7 +117,7 @@ function SelectLuckyNumber() {
         onClick={handleSendLuckyNumber}
         disabled={selectedNumbers.length < 5 || selectedStars.length < 2}
       >
-        Soumettre
+        Enregistrer
       </button>
     </div>
   );

@@ -10,7 +10,7 @@ CREATE TABLE role (
 CREATE TABLE next_game (
     id_next_game SERIAL PRIMARY KEY,
     reference_date DATE NOT NULL,
-    jackpot NUMERIC (15, 2) NOT NULL
+    jackpot INT NOT NULL
 );
 CREATE TABLE "user" (
     id_user SERIAL PRIMARY KEY,
