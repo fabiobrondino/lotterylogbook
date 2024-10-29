@@ -25,7 +25,8 @@ const controller = {
 
       const userPayload = {
         userId: result[0].id_user,
-        username: `${result[0].firstname} ${result[0].lastname}`,
+        username: `${result[0].first_name} ${result[0].last_name}`,
+        role: result[0].role_id,
       };
 
       const token = tokenService.get(userPayload);

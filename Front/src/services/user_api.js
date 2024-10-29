@@ -7,9 +7,9 @@ const fetchUser = async () => {
   const token = localStorage.getItem('token');
   // Décodage de JWT qui permet d'extraire les infos qu'il contient, ici, le champ "userId"
   const decodedToken = jwtDecode(token);
+  console.log(decodedToken);
   // On extrait du token JWT décodé
   const { userId } = decodedToken;
-  console.log(decodedToken);
   // On effectue une requête GET à une URL
   const response = await api.get(`/profile/${userId}`);
   // Si la requête est ok, on retourne les données

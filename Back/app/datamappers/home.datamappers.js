@@ -12,6 +12,7 @@ const homeDatamapper = {
     },
 
     async createNextGame(nextGameData) {
+        console.log(nextGameData);
         let sqlQuery = `INSERT INTO public.next_game ("reference_date", "jackpot")
                         VALUES ($1, $2)
                         RETURNING *`;
@@ -19,6 +20,7 @@ const homeDatamapper = {
             nextGameData.reference_date,
             nextGameData.jackpot
         ];
+        console.log(values);
         return await getSpecificResult(sqlQuery, values);
     },
 
