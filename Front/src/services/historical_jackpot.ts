@@ -5,9 +5,10 @@ export const fetchLastResult = async () => {
   return response.data;
 };
 
-export const fetchSpecificResult = async (referenceDate: Date) => {
+export const fetchSpecificResult = async (referenceDate: string) => {
+  console.log('referenceDate', referenceDate);
   const response = await api.post('/history/results', {
-    reference_date: referenceDate,
+    referenceDate,
   });
   return response.data;
 };

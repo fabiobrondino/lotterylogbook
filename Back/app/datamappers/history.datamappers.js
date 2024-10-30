@@ -27,15 +27,15 @@ const historyDatamapper = {
             return await getManyResult(sqlQuery);
     },
 
-    async getSpecificResult(reference_date) {
-
+    async getSpecificResult({ referenceDate }) {
+        const reference_date = new Date(referenceDate).toISOString().split('T')[0];
         let sqlQuery = `SELECT *
                         FROM results
                         WHERE results.reference_date = $1;
                         `;
         let values = [reference_date];
-
-        return await getSpecificResult(sqlQuery, values);
+        const result = await getSpecificResult(sqlQuery, values);
+        return result;
     },
 
     async getHistory(id_profile) {

@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.post('/', controllerHandler(historyController.sendResults));
 router.get('/result', controllerHandler(historyController.getResult));
-router.get('/results', controllerHandler(historyController.getResults));
+router.post('/results', controllerHandler(historyController.getResults));
 
 router.get('/:id', controllerHandler(historyController.getHistory));
 
