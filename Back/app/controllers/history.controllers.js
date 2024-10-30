@@ -10,10 +10,21 @@ const controller = {
                     return;
                 }
                 else {
-                const result = await historyDatamapper.getResults(resultData);
+                const result = await historyDatamapper.postResults(resultData);
                 res.json(result);
                 };
             
+            },
+
+            getResult: async (_ , res) => {
+                const result = await historyDatamapper.getLastResult();
+                res.json(result);
+            },
+
+            getResults: async (req , res) => {
+                const reference_date = req.body;
+                const result = await historyDatamapper.getSpecificResult(reference_date);
+                res.json(result);
             },
 
             getHistory: async (req, res) => {

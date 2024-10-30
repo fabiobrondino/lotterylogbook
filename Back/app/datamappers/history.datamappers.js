@@ -3,7 +3,7 @@ const { getManyResult, getSpecificResult } = require('./utility');
 
 const historyDatamapper = {
 
-    async getResults(resultData) {
+    async postResults(resultData) {
 
         let sqlQuery = `INSERT INTO results ("number", "star", "reference_date")
                         VALUES ($1, $2, $3)
@@ -13,6 +13,27 @@ const historyDatamapper = {
             resultData.star,
             resultData.reference_date
         ];
+        return await getSpecificResult(sqlQuery, values);
+    },
+
+    async getLastResult() {
+            let sqlQuery = `SELECT *
+                            FROM results
+                            ORDER BY reference_date DESC
+                            LIMIT 1;
+                            `;
+    
+            return await getManyResult(sqlQuery);
+    },
+
+    async getSpecificResult(reference_date) {
+
+        let sqlQuery = `SELECT *
+                        FROM results
+                        WHERE results.reference_date = $1;
+                        `;
+        let values = [reference_date];
+
         return await getSpecificResult(sqlQuery, values);
     },
 

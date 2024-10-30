@@ -13,6 +13,7 @@ import PrivateRoute from './services/securePath';
 import Grid from './routes/Grid/Grid';
 import CreateNextGame from './components/CreateNextGame/CreateNextGame';
 import PrivateRouteRole from './services/securePathRole';
+import Results from './routes/Results/Results';
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/results',
+        element: (
+          <PrivateRoute>
+            <Results />
           </PrivateRoute>
         ),
       },
