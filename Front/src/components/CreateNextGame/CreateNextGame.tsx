@@ -36,6 +36,8 @@ function CreateNextGame() {
     console.log('Nombre:', number);
     const dateObject = new Date(nextDate);
     createNextGame(dateObject, typeof number === 'number' ? number : 0);
+
+    setNumber('');
   };
 
   return (

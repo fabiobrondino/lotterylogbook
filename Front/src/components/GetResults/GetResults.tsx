@@ -22,17 +22,16 @@ function GetResults() {
         setIsLoading(true);
         const fetchedHistoricalJackpots: { result: HistoricalJackpot[] } =
           await fetchLastResult();
-        console.log('Fetched Data:', fetchedHistoricalJackpots);
         const jackpots = fetchedHistoricalJackpots.result.map((jackpot) => ({
           id_results: jackpot.id_results,
           number: jackpot.number,
           star: jackpot.star,
           reference_date: new Date(jackpot.reference_date),
         }));
-        console.log('Jackpots:', jackpots);
         setHistoricalJackpots({ result: jackpots });
         setIsLoading(false);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       }
     };

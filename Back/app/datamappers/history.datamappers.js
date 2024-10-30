@@ -4,14 +4,15 @@ const { getManyResult, getSpecificResult } = require('./utility');
 const historyDatamapper = {
 
     async postResults(resultData) {
+        console.log(resultData);
 
         let sqlQuery = `INSERT INTO results ("number", "star", "reference_date")
                         VALUES ($1, $2, $3)
                         RETURNING *`;
         let values = [
-            resultData.number,
-            resultData.star,
-            resultData.reference_date
+            resultData.result.number,
+            resultData.result.star,
+            resultData.result.reference_date
         ];
         return await getSpecificResult(sqlQuery, values);
     },

@@ -52,6 +52,9 @@ function SelectLuckyNumber() {
       console.log('Étoiles sélectionnées:', selectedStars);
       alert('Sélection envoyée avec succès!');
     }
+
+    setSelectedNumbers([]);
+    setSelectedStars([]);
   };
 
   return (

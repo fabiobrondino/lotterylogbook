@@ -3,16 +3,9 @@ const { historyDatamapper } = require('../datamappers');
 const controller = {
     
             sendResults: async (req, res) => {
-                const role_id = req.params.role_id;
                 const resultData = req.body;
-                if (role_id !== '1') {
-                    res.status(403).json('Forbidden');
-                    return;
-                }
-                else {
                 const result = await historyDatamapper.postResults(resultData);
-                res.json(result);
-                };
+                res.json(result); 
             
             },
 

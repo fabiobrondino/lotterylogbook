@@ -12,7 +12,7 @@ const router = express.Router();
 
 //! definir les prochaines routes ici
 
-router.post('/:role_id', controllerHandler(historyController.sendResults));
+router.post('/', controllerHandler(historyController.sendResults));
 router.get('/result', controllerHandler(historyController.getResult));
 router.get('/results', controllerHandler(historyController.getResults));
 

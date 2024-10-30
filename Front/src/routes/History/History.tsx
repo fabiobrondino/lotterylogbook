@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
+import GetResults from '../../components/GetResults/GetResults';
 
 function History() {
   return (
     <div>
-      <h1>History</h1>
-      <Link to="/helloworld">Go to Hello World</Link>
+      <GetResults />
     </div>
   );
 }
