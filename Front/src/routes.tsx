@@ -11,9 +11,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import PrivateRoute from './services/securePath';
 import Grid from './routes/Grid/Grid';
-import CreateNextGame from './components/CreateNextGame/CreateNextGame';
 import PrivateRouteRole from './services/securePathRole';
 import Results from './routes/Results/Results';
+import Administrator from './routes/Administrator/Administrator';
 
 export const router = createBrowserRouter([
   {
@@ -78,11 +78,11 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/nextGame',
+        path: '/administrator',
         element: (
           <PrivateRoute>
             <PrivateRouteRole>
-              <CreateNextGame />
+              <Administrator />
             </PrivateRouteRole>
           </PrivateRoute>
         ),

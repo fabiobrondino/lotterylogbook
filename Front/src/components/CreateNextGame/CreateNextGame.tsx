@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import createNextGame from '../../services/role_api';
 
-function NextDateForm() {
+function CreateNextGame() {
   const [nextDate, setNextDate] = useState<string>('');
   const [number, setNumber] = useState<number | ''>('');
   const [dayName, setDayName] = useState<string>('');
@@ -78,4 +78,4 @@ function NextDateForm() {
   );
 }
 
-export default NextDateForm;
+export default CreateNextGame;

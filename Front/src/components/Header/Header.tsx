@@ -59,7 +59,7 @@ function Header() {
           {role === 1 && (
             <li>
               <Link
-                to="/nextGame"
+                to="/administrator"
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
               >
                 Prochain Jeu
