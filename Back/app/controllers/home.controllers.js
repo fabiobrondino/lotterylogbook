@@ -48,6 +48,13 @@ const controller = {
                 
         },
 
+        combinations: async (req, res) => {
+            const id_profile = req.params.id;
+            const result = await homeDatamapper.getCombinations(id_profile);
+            res.json(result);
+        
+        },
+
         createCombinations: async (req, res) => {
             const combinationsData = req.body;
             const id_profile = req.params.id;

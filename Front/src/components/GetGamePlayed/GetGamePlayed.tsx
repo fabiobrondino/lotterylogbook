@@ -11,7 +11,9 @@ function GetGamePlayed() {
 
   return (
     <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Toutes mes grilles jouées</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        Toutes mes grilles jouées
+      </h1>
 
       {/* Div principale avec la date de jeu */}
       <div

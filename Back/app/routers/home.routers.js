@@ -19,6 +19,7 @@ router.get('/:id/lucky-number', controllerHandler(homeController.luckyNumber));
 router.post('/:id/lucky-number', controllerHandler(homeController.createLuckyNumber));
 router.delete('/:id/lucky-number', controllerHandler(homeController.deleteLuckyNumber));
 
+router.get('/:id/combinations', controllerHandler(homeController.combinations));
 router.post('/:id/combinations', controllerHandler(homeController.createCombinations));
 router.delete('/combinations/:id_combination', controllerHandler(homeController.deleteCombinations));
 

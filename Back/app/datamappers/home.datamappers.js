@@ -51,6 +51,16 @@ const homeDatamapper = {
         let values = [id_profile];
         return await getSpecificResult(sqlQuery, values);
     },
+
+    async getCombinations(id_profile) {
+        let sqlQuery = `SELECT combinations.* 
+                        FROM public.combinations 
+                        JOIN public.user 
+                        ON "user".id_user = combinations.user_id 
+                        WHERE "user".id_user = $1`;
+        let values = [id_profile];
+        return await getSpecificResult(sqlQuery, values);
+    },
     
     async createCombinations(newCombinations) {
 
