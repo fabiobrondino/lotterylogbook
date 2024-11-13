@@ -1,9 +1,9 @@
-import GetResults from '../../components/GetResults/GetResults';
+import GetGamePlayed from '../../components/GetGamePlayed/GetGamePlayed';
 
 function History() {
   return (
     <div>
-      <GetResults />
+      <GetGamePlayed />
     </div>
   );
 }

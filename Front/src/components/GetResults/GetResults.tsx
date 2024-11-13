@@ -57,8 +57,8 @@ function GetResults() {
                   year: 'numeric',
                 })}
               </h2>
-              <div className="flex flex-col justify-center items-center">
-                <div className="flex gap-2 bg-white">
+              <div className="flex flex-col justify-center items-center bg-white p-4">
+                <div className="flex gap-2">
                   {historicalJackpot.number.map((num) => (
                     <p
                       key={num}
@@ -68,7 +68,7 @@ function GetResults() {
                     </p>
                   ))}
                 </div>
-                <div className="flex gap-2 bg-white">
+                <div className="flex gap-2">
                   {historicalJackpot.star.map((num) => (
                     <p
                       key={num}

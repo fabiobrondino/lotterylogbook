@@ -63,11 +63,16 @@ function GetMoreResults() {
 
   return (
     <div className="bg-blue-900 my-8">
-      <input
-        type="date"
-        onChange={handleDateChange}
-        className="mb-4 p-2 rounded border border-gray-300"
-      />
+      <p className="text-white text-center text-2xl font-semibold">
+        Résultats antérieurs
+      </p>
+      <div className="flex justify-center items-center gap-sm">
+        <input
+          type="date"
+          onChange={handleDateChange}
+          className="mx-auto my-4 p-2 rounded border border-gray-300 text-center"
+        />
+      </div>
       {isLoading ? (
         <p>Chargement des résultats...</p>
       ) : (
@@ -85,7 +90,7 @@ function GetMoreResults() {
                   year: 'numeric',
                 })}
               </h2>
-              <div className="flex flex-col justify-center items-center">
+              <div className="flex flex-col justify-center items-center bg-white p-4">
                 <div className="flex gap-2 bg-white">
                   {historicalJackpot.number.map((num) => (
                     <p
