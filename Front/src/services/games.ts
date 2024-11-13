@@ -5,6 +5,7 @@ const sendGame = async (
   games: {
     numbers: number[];
     stars: number[];
+    referenceDate: Date;
   }[]
 ) => {
   // Récupération du Token stocké sous la clé "token

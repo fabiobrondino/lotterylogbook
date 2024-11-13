@@ -28,9 +28,10 @@ function NextGame() {
         // @ts-ignore
         const jackpots = fetchedNextJackpot.result.map((jackpot) => ({
           id_next_game: jackpot.id_next_game,
-          referenceDate: new Date(jackpot.reference_date), // Convertir en objet Date
+          referenceDate: jackpot.reference_date, // Convertir en objet Date
           jackpot: parseFloat(jackpot.jackpot), // Assurer que jackpot est un nombre
         }));
+        console.log(`jackpots`, jackpots);
         setNextJackpots({ result: jackpots });
         setNextGameData({ result: jackpots });
         setIsLoading(false);
@@ -54,12 +55,16 @@ function NextGame() {
               className="flex flex-col items-center justify-center gap-sm text-center"
             >
               <h2 className="flex w-full items-center justify-center gap-xs text-white text-xl">
-                {nextJackpot.referenceDate.toLocaleDateString('fr-FR', {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric',
-                })}
+                {nextJackpot.referenceDate &&
+                  new Date(nextJackpot.referenceDate).toLocaleDateString(
+                    'fr-FR',
+                    {
+                      weekday: 'long',
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    }
+                  )}
               </h2>
               <div className="flex flex-col justify-center">
                 <p className="text-white">Près de</p>

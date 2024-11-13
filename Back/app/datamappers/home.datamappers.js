@@ -65,13 +65,14 @@ const homeDatamapper = {
     async createCombinations(newCombinations) {
 
         const games = newCombinations.combinationsData.games;
+        console.log(games);
         if (!Array.isArray(games)) {
             throw new Error('Invalid data format: games should be an array');
         }
         
         //! a remettre "star_plus" et "reference_date" dans le sqlQuery
-        let sqlQuery = `INSERT INTO public.combinations ("number", "star", "user_id")
-                        VALUES ($1, $2, $3)
+        let sqlQuery = `INSERT INTO public.combinations ("number", "star", "reference_date", "user_id")
+                        VALUES ($1, $2, $3, $4)
                         RETURNING *`;
         
         const results = []; // Tableau pour stocker les résultats des insertions
@@ -80,14 +81,18 @@ const homeDatamapper = {
             if (!Array.isArray(game.numbers) || !Array.isArray(game.stars) || game.numbers.length === 0 || game.stars.length === 0) {
                 continue; // Ignorez les entrées invalides
             }
+            const reference_date = game.referenceDate;
             
             let values = [
                 game.numbers,   // Insère chaque numéro individuellement
                 game.stars,     // Insère chaque étoile individuellement
+                reference_date,
                 newCombinations.id_profile
             ];
     
             const result = await getSpecificResult(sqlQuery, values);
+            console.log('toto');
+            console.log(result);
             results.push(result); // Ajoute le résultat à la liste
         }
     

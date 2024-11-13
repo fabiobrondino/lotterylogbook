@@ -6,6 +6,7 @@ import { TrashIcon } from '@heroicons/react/20/solid';
 import sendGame from '../../services/games';
 import calculerPrixTicket from '../../services/price';
 import sendLoss from '../../services/loss';
+import { useNextGame } from '../../services/NextGameContext';
 
 // Fonction pour générer des combinaisons de k éléments parmi un tableau
 const getCombinations = (array: number[], k: number) => {
@@ -38,6 +39,9 @@ function LuckyNumber({
   stars,
   handleDelete,
 }: LuckyNumberProps) {
+  const nextGameContext = useNextGame();
+  const referenceDate = nextGameContext?.nextGameData?.result[0]?.referenceDate;
+
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
   const [selectedStars, setSelectedStars] = useState<number[]>([]);
   const [generatedGames, setGeneratedGames] = useState<
@@ -162,6 +166,7 @@ function LuckyNumber({
         .map((game) => ({
           numbers: game.numbers,
           stars: game.stars,
+          referenceDate,
         }));
 
       const lossToSend = prixTickets.filter(
@@ -174,6 +179,7 @@ function LuckyNumber({
       );
 
       // Logique pour envoyer les jeux via une API
+      console.log('gamesToSend', gamesToSend);
       const responseGameSend = await sendGame(gamesToSend);
 
       console.log(lossToSend);
