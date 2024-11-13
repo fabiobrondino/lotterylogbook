@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import fetchNextGame from '../../services/next_game_api';
+import { useNextGame } from '../../services/NextGameContext';
 
 interface NextJackpot {
   referenceDate: Date;
@@ -12,6 +13,11 @@ function NextGame() {
     result: [],
   });
   const [isLoading, setIsLoading] = useState(true);
+  const nextGameContext = useNextGame();
+  if (!nextGameContext) {
+    throw new Error('useNextGame must be used within a NextGameProvider');
+  }
+  const { setNextGameData } = nextGameContext;
 
   useEffect(() => {
     const fetchNextJackpot = async () => {
@@ -26,6 +32,7 @@ function NextGame() {
           jackpot: parseFloat(jackpot.jackpot), // Assurer que jackpot est un nombre
         }));
         setNextJackpots({ result: jackpots });
+        setNextGameData({ result: jackpots });
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -33,7 +40,7 @@ function NextGame() {
     };
     fetchNextJackpot();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setNextGameData]);
 
   return (
     <div className="bg-blue-900 my-8">

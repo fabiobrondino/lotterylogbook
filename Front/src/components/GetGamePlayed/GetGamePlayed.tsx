@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useNextGame } from '../../services/NextGameContext';
 
 function GetGamePlayed() {
   // État pour contrôler la visibilité
   const [showDetails, setShowDetails] = useState(false);
+  const nextGameContext = useNextGame();
+  console.log(nextGameContext?.nextGameData.result[0].referenceDate);
 
   // Fonction pour gérer le clic
   const handleToggle = () => {
