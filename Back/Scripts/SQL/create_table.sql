@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS role, "user", lucky_number, combinations, results, price, next_game CASCADE;
+DROP TABLE IF EXISTS role, "user", lucky_number, combinations, results, next_game CASCADE;
 
 CREATE TABLE role (
     id_role SERIAL PRIMARY KEY,
@@ -55,14 +55,6 @@ CREATE TABLE results (
     number INT[] NOT NULL,
     star INT[] NOT NULL,
     reference_date DATE NOT NULL
-
-);
-
-CREATE TABLE price (
-    id_price SERIAL PRIMARY KEY,
-    price NUMERIC (15, 2) NOT NULL,
-    combinations_id INT,
-    FOREIGN KEY (combinations_id) REFERENCES combinations(id_combinations)
 
 );
 
