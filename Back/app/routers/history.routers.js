@@ -18,6 +18,9 @@ router.post('/results', controllerHandler(historyController.getResults));
 
 router.get('/:id', controllerHandler(historyController.getHistory));
 
+router.get('/:id/loss', controllerHandler(historyController.getLoss));
+router.put('/:id/loss', controllerHandler(historyController.editLoss));
+
 router.get('/:id/:reference_date', controllerHandler(historyController.getSpecificHistory));
 
 router.use(() => {

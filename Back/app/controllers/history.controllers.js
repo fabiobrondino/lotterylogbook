@@ -1,4 +1,5 @@
 const { historyDatamapper } = require('../datamappers');
+const { getLoss, editLoss } = require('../datamappers/history.datamappers');
 
 const controller = {
     
@@ -31,6 +32,21 @@ const controller = {
                 const id_profile = req.params.id;
                 const reference_date = req.params.reference_date;
                 const result = await historyDatamapper.getSpecificHistory(id_profile, reference_date);
+                res.json(result);
+            
+            },
+
+            getLoss: async (req, res) => {
+                const id_profile = req.params.id;
+                const result = await historyDatamapper.getLoss(id_profile);
+                res.json(result);
+            
+            },
+
+            editLoss: async (req, res) => {
+                const id_profile = req.params.id;
+                const loss = req.body;
+                const result = await historyDatamapper.editLoss(id_profile, loss);
                 res.json(result);
             
             }

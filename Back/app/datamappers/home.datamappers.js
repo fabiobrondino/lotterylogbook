@@ -12,7 +12,6 @@ const homeDatamapper = {
     },
 
     async createNextGame(nextGameData) {
-        console.log(nextGameData);
         let sqlQuery = `INSERT INTO public.next_game ("reference_date", "jackpot")
                         VALUES ($1, $2)
                         RETURNING *`;
@@ -20,7 +19,6 @@ const homeDatamapper = {
             nextGameData.reference_date,
             nextGameData.jackpot
         ];
-        console.log(values);
         return await getSpecificResult(sqlQuery, values);
     },
 
@@ -35,7 +33,6 @@ const homeDatamapper = {
     },
 
     async createLuckyNumber(newLuckyNumber) {
-        console.log(newLuckyNumber);
         const { selectedNumbers, selectedStars } = newLuckyNumber.luckyNumberData;
         let sqlQuery = `INSERT INTO public.lucky_number ("number", "star", "user_id")
                         VALUES ($1, $2, $3)
@@ -45,8 +42,7 @@ const homeDatamapper = {
             selectedStars,
             newLuckyNumber.id_profile
         ];
-        console.log(values);
-        console.log('toto');
+
         return await getSpecificResult(sqlQuery, values);
     },
 
@@ -57,9 +53,7 @@ const homeDatamapper = {
     },
     
     async createCombinations(newCombinations) {
-        console.log(newCombinations);
-        console.log(newCombinations.combinationsData);
-        console.log(newCombinations.combinationsData.games);
+
         const games = newCombinations.combinationsData.games;
         if (!Array.isArray(games)) {
             throw new Error('Invalid data format: games should be an array');
@@ -83,7 +77,6 @@ const homeDatamapper = {
                 newCombinations.id_profile
             ];
     
-            console.log(values);
             const result = await getSpecificResult(sqlQuery, values);
             results.push(result); // Ajoute le résultat à la liste
         }

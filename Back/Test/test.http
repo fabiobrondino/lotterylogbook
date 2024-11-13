@@ -161,3 +161,16 @@ GET http://localhost:3004/history/1
 GET http://localhost:3004/history/1/2990-05-05
 
 ###
+
+GET http://localhost:3004/history/2/loss
+
+###
+
+PUT http://localhost:3004/history/2/loss
+Content-Type: application/json
+
+{
+  "loss": 1
+}
+
+###

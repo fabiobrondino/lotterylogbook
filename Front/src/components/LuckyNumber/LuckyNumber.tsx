@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TrashIcon } from '@heroicons/react/20/solid';
 import sendGame from '../../services/games';
+import calculerPrixTicket from '../../services/price';
+import sendLoss from '../../services/loss';
 
 // Fonction pour générer des combinaisons de k éléments parmi un tableau
 const getCombinations = (array: number[], k: number) => {
@@ -41,6 +43,7 @@ function LuckyNumber({
   const [generatedGames, setGeneratedGames] = useState<
     Array<{ numbers: number[]; stars: number[] }>
   >([]);
+  const [prixTickets, setPrixTickets] = useState<number[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedGames, setSelectedGames] = useState<{
     [key: string]: boolean;
@@ -128,6 +131,25 @@ function LuckyNumber({
     }
   };
 
+  useEffect(() => {
+    const calculerPrixPourTousLesJeux = () => {
+      const prixArray: number[] = [];
+
+      generatedGames.forEach((game) => {
+        const nombreNumeros = game.numbers.length;
+        const nombreEtoiles = game.stars.length;
+
+        const prixTicket = calculerPrixTicket(nombreNumeros, nombreEtoiles);
+        console.log(`Le prix du ticket est de : ${prixTicket}€`);
+        prixArray.push(prixTicket);
+      });
+
+      setPrixTickets(prixArray);
+    };
+
+    calculerPrixPourTousLesJeux();
+  }, [generatedGames]); // Recalculer lorsque generatedGames change
+
   // Fonction pour envoyer les jeux sélectionnés via l'API
   const sendSelectedGames = async () => {
     try {
@@ -142,10 +164,21 @@ function LuckyNumber({
           stars: game.stars,
         }));
 
+      const lossToSend = prixTickets.filter(
+        (_, index) =>
+          selectedGames[
+            `${generatedGames[index].numbers.join(',')}-${generatedGames[
+              index
+            ].stars.join(',')}`
+          ]
+      );
+
       // Logique pour envoyer les jeux via une API
-      console.log(gamesToSend); // Remplace par ta logique d'envoi
-      const response = await sendGame(gamesToSend);
-      console.log('Mise à jour réussie', response);
+      const responseGameSend = await sendGame(gamesToSend);
+
+      console.log(lossToSend);
+      const responseLossSend = await sendLoss(lossToSend);
+      console.log('Mise à jour réussie', responseLossSend);
     } catch (err) {
       console.error("Erreur lors de l'envoi", err);
     }
@@ -248,6 +281,11 @@ function LuckyNumber({
                   |{' '}
                   <span className="mx-2">
                     Étoiles : {game.stars.join(', ')}
+                  </span>
+                  <span className="ml-auto mr-2">
+                    {prixTickets.length > 0 && (
+                      <span>{prixTickets[generatedGames.indexOf(game)]}€</span>
+                    )}
                   </span>
                 </li>
               );
