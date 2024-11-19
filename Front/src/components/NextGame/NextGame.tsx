@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { parseISO } from 'date-fns';
 import fetchNextGame from '../../services/next_game_api';
 import { useNextGame } from '../../services/NextGameContext';
 
@@ -28,7 +29,7 @@ function NextGame() {
         // @ts-ignore
         const jackpots = fetchedNextJackpot.result.map((jackpot) => ({
           id_next_game: jackpot.id_next_game,
-          referenceDate: jackpot.reference_date, // Convertir en objet Date
+          referenceDate: parseISO(jackpot.reference_date), // Convertir en objet Date
           jackpot: parseFloat(jackpot.jackpot), // Assurer que jackpot est un nombre
         }));
         console.log(`jackpots`, jackpots);

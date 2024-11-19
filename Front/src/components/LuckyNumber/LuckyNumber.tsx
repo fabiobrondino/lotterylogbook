@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
+import { parseISO, format } from 'date-fns';
 import { TrashIcon } from '@heroicons/react/20/solid';
 import sendGame from '../../services/games';
 import calculerPrixTicket from '../../services/price';
@@ -40,6 +41,7 @@ function LuckyNumber({
   handleDelete,
 }: LuckyNumberProps) {
   const nextGameContext = useNextGame();
+  console.log('nextGameContext', nextGameContext);
   const referenceDate = nextGameContext?.nextGameData?.result[0]?.referenceDate;
 
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
@@ -166,7 +168,7 @@ function LuckyNumber({
         .map((game) => ({
           numbers: game.numbers,
           stars: game.stars,
-          referenceDate,
+          referenceDate: format(new Date(referenceDate), 'yyyy-MM-dd'),
         }));
 
       const lossToSend = prixTickets.filter(
