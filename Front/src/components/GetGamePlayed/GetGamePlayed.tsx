@@ -12,6 +12,7 @@ function GetGamePlayed() {
   const [showDetails, setShowDetails] = useState<Record<string, boolean>>({});
 
   const nextGameContext = useNextGame();
+  console.log(`nextGameContext`, nextGameContext);
 
   // Récupérer les données à l'initialisation
   useEffect(() => {
@@ -90,10 +91,16 @@ function GetGamePlayed() {
               <div className="mt-4 p-4 bg-white rounded-lg shadow-md border border-gray-200">
                 <h3 className="text-lg font-medium">Grilles jouées</h3>
                 {games.map((game, index) => (
-                  <p key={game.id_combinations} className="mt-2 text-gray-700">
-                    Grille {index + 1}: {game.number.join(', ')} | Étoiles:{' '}
-                    {game.star.join(', ')}
-                  </p>
+                  <div key={game.id_combinations} className="mt-2">
+                    <p
+                      key={game.id_combinations}
+                      className="mt-2 text-gray-700"
+                    >
+                      Grille {index + 1}: {game.number.join(', ')} | Étoiles:{' '}
+                      {game.star.join(', ')}
+                    </p>
+                    <p>Gain</p>
+                  </div>
                 ))}
               </div>
             )}

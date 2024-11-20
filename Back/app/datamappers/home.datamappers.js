@@ -70,7 +70,7 @@ const homeDatamapper = {
             throw new Error('Invalid data format: games should be an array');
         }
         
-        //! a remettre "star_plus" et "reference_date" dans le sqlQuery
+        //! a remettre "star_plus" dans le sqlQuery
         let sqlQuery = `INSERT INTO public.combinations ("number", "star", "reference_date", "user_id")
                         VALUES ($1, $2, $3, $4)
                         RETURNING *`;
@@ -97,6 +97,31 @@ const homeDatamapper = {
         }
     
         return results; // Retourne tous les résultats d'insertion
+    },
+
+    async updateResultCombinations(resultData) {
+
+        let sqlQuery = `
+      UPDATE combinations
+      SET gain = (
+        SELECT
+          CASE
+            WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 5
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 10
+            WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 5
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 1 THEN 5
+            ELSE NULL
+          END
+      )
+      WHERE reference_date = $3
+      RETURNING *;`;
+
+        let values = [
+            resultData.result.number,
+            resultData.result.star,
+            resultData.result.reference_date
+        ];
+        return await getSpecificResult(sqlQuery, values);
     },
 
     async deleteCombinations(id_combination) {

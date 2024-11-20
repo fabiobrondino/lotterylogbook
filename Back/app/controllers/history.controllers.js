@@ -1,12 +1,24 @@
 const { historyDatamapper } = require('../datamappers');
+const { homeDatamapper } = require('../datamappers');
 const { getLoss, editLoss } = require('../datamappers/history.datamappers');
 
 const controller = {
     
             sendResults: async (req, res) => {
+                try {
                 const resultData = req.body;
-                const result = await historyDatamapper.postResults(resultData);
-                res.json(result); 
+                const newResult = await historyDatamapper.postResults(resultData);
+                const updatedCombinations = await homeDatamapper.updateResultCombinations(resultData);
+                res.status(201).json({
+                    message: 'Result added and gains updated successfully.',
+                    result: newResult,
+                            updatedCombinations,
+                }); 
+                } catch (error) {
+                    console.error(error);
+                    res.status(500).json({ 
+                        message: 'An error occurred while adding result and updating gains.' });
+                }
             
             },
 
