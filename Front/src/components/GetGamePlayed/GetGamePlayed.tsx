@@ -56,7 +56,7 @@ function GetGamePlayed() {
 
   // Trier les dates par ordre croissant
   const sortedDates = Object.entries(gamesByDate).sort(
-    ([dateA], [dateB]) => new Date(dateA).getTime() - new Date(dateB).getTime()
+    ([dateA], [dateB]) => new Date(dateB).getTime() - new Date(dateA).getTime()
   );
 
   return (

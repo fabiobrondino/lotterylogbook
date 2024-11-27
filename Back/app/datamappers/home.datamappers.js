@@ -57,7 +57,8 @@ const homeDatamapper = {
                         FROM public.combinations 
                         JOIN public.user 
                         ON "user".id_user = combinations.user_id 
-                        WHERE "user".id_user = $1`;
+                        WHERE "user".id_user = $1
+                        ORDER BY "reference_date" DESC;`;
         let values = [id_profile];
         return await getSpecificResult(sqlQuery, values);
     },
