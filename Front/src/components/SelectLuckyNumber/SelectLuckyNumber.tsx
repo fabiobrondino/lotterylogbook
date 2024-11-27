@@ -58,7 +58,7 @@ function SelectLuckyNumber() {
   };
 
   return (
-    <div className="container mx-auto my-4 border-4 p-8 w-5/6 lg:w-4/6 ">
+    <div className="container bg-white mx-auto my-4 border-4 p-8 w-5/6 lg:w-4/6 ">
       <h2 className="text-xl md:text-2xl mb-4 mb-4">
         Sélectionnez vos numéros
       </h2>
@@ -70,7 +70,7 @@ function SelectLuckyNumber() {
             tabIndex={0}
             className={`rounded-full border-2 ${
               selectedNumbers.includes(number)
-                ? 'border-blue-500'
+                ? 'border-blue-700 bg-blue-700 text-white'
                 : 'border-gray-300'
             } p-4 w-10 h-10 cursor-pointer flex items-center justify-center text-xl`}
             onClick={() => handleNumberSelect(number)}
@@ -95,7 +95,9 @@ function SelectLuckyNumber() {
             role="button"
             tabIndex={0}
             className={`border-2 border-gray-500 p-4 w-12 h-12 cursor-pointer flex items-center justify-center text-xl relative ${
-              selectedStars.includes(star) ? 'bg-yellow-500' : 'bg-gray-300'
+              selectedStars.includes(star)
+                ? 'bg-yellow-500 bg-yellow-500 text-white'
+                : 'bg-gray-300'
             }`}
             style={{
               clipPath:

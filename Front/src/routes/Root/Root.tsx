@@ -8,7 +8,7 @@ function Root() {
   const noHeaderRoutes = ['/', '/login', '/register'];
   return (
     <NextGameProvider>
-      <div>
+      <div className="bg-blue-200">
         {!noHeaderRoutes.includes(location.pathname) && (
           <>
             <Header />

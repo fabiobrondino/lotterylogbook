@@ -193,7 +193,7 @@ function LuckyNumber({
   };
 
   return (
-    <div className="border-4 p-8 w-5/6 lg:w-3/5 mb-4">
+    <div className="bg-white border-4 p-8 w-5/6 lg:w-3/5 mb-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl md:text-2xl">Vos numéros porte-bonheur</h2>
         <button type="button" className="p-3" onClick={onDeleteClick}>

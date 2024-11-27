@@ -54,13 +54,13 @@ function GetGamePlayed() {
   if (loading) return <p>Chargement...</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
-  // Trier les dates par ordre croissant
+  // Trier les dates par ordre décroissant
   const sortedDates = Object.entries(gamesByDate).sort(
     ([dateA], [dateB]) => new Date(dateB).getTime() - new Date(dateA).getTime()
   );
 
   return (
-    <div className="p-4 max-w-md mx-auto">
+    <div className="p-4 max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold mb-4 text-center">
         Toutes mes grilles jouées pour le :
       </h1>
@@ -91,15 +91,47 @@ function GetGamePlayed() {
               <div className="mt-4 p-4 bg-white rounded-lg shadow-md border border-gray-200">
                 <h3 className="text-lg font-medium">Grilles jouées</h3>
                 {games.map((game, index) => (
-                  <div key={game.id_combinations} className="mt-2">
-                    <p
-                      key={game.id_combinations}
-                      className="mt-2 text-gray-700"
-                    >
-                      Grille {index + 1}: {game.number.join(', ')} | Étoiles:{' '}
-                      {game.star.join(', ')}
+                  <div key={game.id_combinations} className="mt-4">
+                    <p className="text-gray-700 mb-2">
+                      <span className="font-bold">Grille {index + 1}:</span>
                     </p>
-                    <p>Gain</p>
+                    <div className="flex w-full mx-auto">
+                      <div className="grid grid-cols-[repeat(auto-fit,_minmax(50px,_1fr))] max-w-sm place-items-center gap-2">
+                        {/* Numéros */}
+                        {game.number.map((number: number) => (
+                          <span
+                            key={number}
+                            className="rounded-full border-2 p-4 w-10 h-10 flex items-center justify-center text-xl bg-blue-300 border-blue-500"
+                          >
+                            {number}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-[repeat(auto-fit,_minmax(60px,_1fr))] max-w-xs place-items-center gap-2 ml-4">
+                        {/* Étoiles */}
+                        {game.star.map((star: number) => (
+                          <span
+                            key={star}
+                            className="border-2 w-12 h-12 flex items-center justify-center text-xl relative bg-yellow-300 border-yellow-500"
+                            style={{
+                              clipPath:
+                                'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                            }}
+                          >
+                            {star}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <p
+                        className={`mt-4 font-medium ${
+                          game.gain ? 'text-green-600' : 'text-gray-700'
+                        } ml-auto`}
+                      >
+                        Gain: {game.gain || 'Aucun'}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

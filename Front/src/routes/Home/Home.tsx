@@ -32,20 +32,32 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="container mx-auto my-8 p-6">
+      {/* Message de chargement */}
       {isLoading ? (
-        <p>Chargement des utilisateurs...</p>
+        <p className="text-center text-white text-lg">
+          Chargement des utilisateurs...
+        </p>
       ) : (
-        <div>
+        <div className="space-y-6">
+          {/* Affichage des utilisateurs */}
           {users.result.map((user) => (
-            <div key={user.id_user}>
-              <h2>Salut {user.first_name}</h2>
-              <p>{user.email}</p>
+            <div
+              key={user.id_user}
+              className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center gap-4"
+            >
+              <h2 className="text-2xl font-semibold text-blue-900">
+                Salut {user.first_name}, chanceux aujourd&apos;hui ?
+              </h2>
             </div>
           ))}
         </div>
       )}
-      <SelectLuckyNumber />
+
+      {/* Sélecteur de numéros chanceux */}
+      <div className="bg-blue-900 shadow-lg rounded-lg p-6 mt-6 ">
+        <SelectLuckyNumber />
+      </div>
     </div>
   );
 }

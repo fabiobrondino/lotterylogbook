@@ -41,7 +41,7 @@ function CreateNextGame() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 border rounded-lg shadow-md">
+    <div className="bg-white max-w-md mx-auto p-4 border rounded-lg shadow-md">
       <h2 className="text-xl font-bold mb-4">Prochain tirage du loto</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

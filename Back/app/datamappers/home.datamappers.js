@@ -108,9 +108,31 @@ const homeDatamapper = {
         SELECT
           CASE
             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 5
-             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 10
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 100000000
             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 5
-             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 1 THEN 5
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 1 THEN 10000000
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 5
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 0 THEN 1000000
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 4
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 100000
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 4
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 1 THEN 10000
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 3
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 1000
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 4
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 0 THEN 100
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 2
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 10
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 3
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 1 THEN 1
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 3
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 0 THEN 0.5
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 1
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 2 THEN 0.25
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 2
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 1 THEN 0.12
+             WHEN array_length(ARRAY(SELECT UNNEST(combinations.number) INTERSECT SELECT UNNEST($1::int[])), 1) = 2
+             AND array_length(ARRAY(SELECT UNNEST(combinations.star) INTERSECT SELECT UNNEST($2::int[])), 1) = 0 THEN 0.06
             ELSE NULL
           END
       )

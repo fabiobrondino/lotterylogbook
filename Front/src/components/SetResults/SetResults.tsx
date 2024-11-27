@@ -61,7 +61,7 @@ function SetResults() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 border rounded-lg shadow-md">
+    <div className="bg-white max-w-md mx-auto p-4 border rounded-lg shadow-md">
       <h2 className="text-2xl mb-4">Enregistrer le résultat du dernier jeu</h2>
       <form onSubmit={(e) => e.preventDefault()}>
         <label className="block mb-2">

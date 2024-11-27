@@ -39,17 +39,19 @@ function GetResults() {
   }, []);
 
   return (
-    <div className="bg-blue-900 my-8">
+    <div className="container mx-auto my-8 p-6">
       {isLoading ? (
-        <p>Chargement des résultats...</p>
+        <p className="text-white text-center text-lg">
+          Chargement des résultats...
+        </p>
       ) : (
-        <div className="py-4">
+        <div className="space-y-8">
           {historicalJackpots.result.map((historicalJackpot) => (
             <div
               key={historicalJackpot.id_results}
-              className="flex flex-col items-center justify-center gap-sm text-center"
+              className="bg-white shadow-lg rounded-lg p-6"
             >
-              <h2 className="flex w-full items-center justify-center gap-xs text-white text-xl">
+              <h2 className="text-xl font-bold text-center text-blue-900 mb-4">
                 {historicalJackpot.reference_date.toLocaleDateString('fr-FR', {
                   weekday: 'long',
                   day: 'numeric',
@@ -57,22 +59,22 @@ function GetResults() {
                   year: 'numeric',
                 })}
               </h2>
-              <div className="flex flex-col justify-center items-center bg-white p-4">
-                <div className="flex gap-2">
+              <div className="flex flex-col items-center justify-center space-y-6">
+                <div className="flex gap-4 justify-center">
                   {historicalJackpot.number.map((num) => (
                     <p
                       key={num}
-                      className="rounded-full border-2 p-4 w-10 h-10 font-semibold flex items-center justify-center text-xl text-white bg-blue-700 border-blue-700"
+                      className="rounded-full border-2 p-4 w-10 h-10 font-semibold flex items-center justify-center text-lg text-white bg-blue-700 border-blue-700"
                     >
                       {num}
                     </p>
                   ))}
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-4 justify-center">
                   {historicalJackpot.star.map((num) => (
                     <p
                       key={num}
-                      className="border-2 w-12 h-12 flex items-center font-semibold justify-center text-xl text-white relative bg-yellow-300 border-yellow-500"
+                      className="border-2 w-12 h-12 flex items-center font-semibold justify-center text-lg text-white bg-yellow-400 border-yellow-500 rounded-full relative"
                       style={{
                         clipPath:
                           'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
