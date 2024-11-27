@@ -37,19 +37,24 @@ function SelectLuckyNumber() {
 
   // Fonction pour gérer l'envoi des données
   const handleSendLuckyNumber = async () => {
-    console.log(selectedNumbers, selectedStars);
-    if (selectedNumbers.length >= 5 && selectedStars.length >= 2) {
+    // Trier les numéros et les étoiles en ordre croissant
+    const sortedNumbers = [...selectedNumbers].sort((a, b) => a - b);
+    const sortedStars = [...selectedStars].sort((a, b) => a - b);
+
+    console.log(sortedNumbers, sortedStars);
+
+    if (sortedNumbers.length >= 5 && sortedStars.length >= 2) {
       try {
-        const response = await sendLuckyNumber(selectedNumbers, selectedStars);
-        console.log(selectedNumbers, selectedStars);
+        const response = await sendLuckyNumber(sortedNumbers, sortedStars);
         console.log('Mise à jour réussie', response);
       } catch (error) {
         console.error("Erreur lors de l'envoi", error);
         return;
       }
-      // Action à effectuer avec les données (ex : les envoyer à une API)
-      console.log('Numéros sélectionnés:', selectedNumbers);
-      console.log('Étoiles sélectionnées:', selectedStars);
+
+      // Action à effectuer avec les données triées
+      console.log('Numéros sélectionnés:', sortedNumbers);
+      console.log('Étoiles sélectionnées:', sortedStars);
       alert('Sélection envoyée avec succès!');
     }
 

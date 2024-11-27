@@ -63,7 +63,7 @@ function LuckyNumber({
     if (selectedNumbers.includes(number)) {
       setSelectedNumbers((prev) => prev.filter((n) => n !== number));
     } else {
-      setSelectedNumbers((prev) => [...prev, number]);
+      setSelectedNumbers((prev) => [...prev, number].sort((a, b) => a - b)); // Tri des numéros
     }
   };
 
@@ -71,7 +71,7 @@ function LuckyNumber({
     if (selectedStars.includes(star)) {
       setSelectedStars((prev) => prev.filter((s) => s !== star));
     } else {
-      setSelectedStars((prev) => [...prev, star]);
+      setSelectedStars((prev) => [...prev, star].sort((a, b) => a - b)); // Tri des étoiles
     }
   };
 
